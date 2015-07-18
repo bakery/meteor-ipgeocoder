@@ -1,6 +1,6 @@
 # IP Address Geocoder for Meteor
 
-Geocode IP addresses using [MaxMind](https://www.maxmind.com/) IP database
+Geocode IP addresses using [MaxMind](https://www.maxmind.com/) IP database. Here's a [demo](https://ipgeocoder.herokuapp.com/).
 
 ## Install
 
