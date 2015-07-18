@@ -40,7 +40,6 @@ By default, IPGeocoder.geocode will return data in the following format (which i
 	city: {
 		name: "Neuilly-sur-Seine"
 	},
-
 	continent: {
 		name: "Europe",
 		code: "EU"
