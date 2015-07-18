@@ -1,4 +1,7 @@
-var defaultDatabaseUrl = 'http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz';
+/* globals IPGeocoder: true, mmdbreader : false */
+
+var defaultDatabaseUrl =
+  'http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz';
 
 var DatabaseState = {
   NotLoaded: 'not-loaded',
@@ -15,8 +18,8 @@ IPGeocoder = {
    */
   load : function(databaseUrl){
     var geocoderSettings = Meteor.settings && Meteor.settings.IPGeocoder;
-    var url = databaseUrl || (geocoderSettings && geocoderSettings.databaseUrl) || 
-      defaultDatabaseUrl;
+    var url = databaseUrl ||
+      (geocoderSettings && geocoderSettings.databaseUrl) || defaultDatabaseUrl;
     var self = this;
 
     if(self.databaseState !== DatabaseState.NotLoaded){
@@ -38,9 +41,10 @@ IPGeocoder = {
   /**
    * Geocode an IP   
    * @param  {String}   ip       IP address to geocode
-   * @param  {Function} callback Optional callback. If nothing is specified, the function is run synchronously
+   * @param  {Function} callback Optional callback. If nothing is specified, 
+   *                             the function is run synchronously
    * @param  {Boolean}  verbose  If set to true, return a full version of the result, else simplify the structure 
-   * @return {Object}            Returns geocoding result if no callback if provided 
+   * @return {Object}            Returns geocoding result if no callback is provided 
    */
   geocode : function(ip, callback, verbose){
     var self = this; 
@@ -89,7 +93,7 @@ IPGeocoder = {
         code : r.country && r.country.iso_code
       },
       location : r.location
-    } : response); 
+    } : r); 
   }, 
 
   databaseState : DatabaseState.NotLoaded,
