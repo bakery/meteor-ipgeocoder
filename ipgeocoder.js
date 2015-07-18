@@ -26,8 +26,6 @@ IPGeocoder = {
     self.databaseState = DatabaseState.Loading;
     
     mmdbreader.open(url,function(err,data){
-      console.error('finished loading data', err, data);
-
       if(!err){
         self.databaseState = DatabaseState.Loaded;
         self.database = data;
@@ -45,12 +43,9 @@ IPGeocoder = {
    * @return {Object}            Returns geocoding result if no callback if provided 
    */
   geocode : function(ip, callback, verbose){
-    var self = this;
-    console.log('database state is', this.databaseState);    
+    var self = this; 
 
     if(this.databaseState === DatabaseState.Loaded){
-      console.error('this.database.getGeoData', this.database.getGeoData);
-
       return callback ? this.database.getGeoData(ip, function(err, result){
         callback.call(self, err, self.formatResponse(result));
       }) : self.formatResponse(this.database.getGeoDataSync(ip), verbose);
